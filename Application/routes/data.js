@@ -7,7 +7,6 @@ const Data = require("../models/data");
 // @router GET api/data
 //  @des   Data
 // @access Public
-
 router.get("/", (req, res) => {
   const error = {};
   Data.find()

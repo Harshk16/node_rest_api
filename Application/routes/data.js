@@ -9,15 +9,23 @@ const Data = require("../models/data");
 // @access Public
 
 router.get("/", (req, res) => {
-  return res.send("Received a GET HTTP method");
+  const error = {};
+  Data.find()
+    .then(data => {
+      console.log("response", data);
+      if (!data) {
+        error.noData = "No Data Found";
+        return res.status(400).json(error);
+      }
+      res.json(data);
+    })
+    .catch(err => res.status(404).json(error));
 });
+
 // @router Post api/data
 //  @des   Post data
 // @access Public
-
 router.post("/", (req, res) => {
-  console.log("post data", req);
-
   const newData = new Data({
     first_name: req.body.first_name,
     last_name: req.body.last_name

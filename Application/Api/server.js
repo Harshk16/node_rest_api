@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 var cors = require('cors');
 const data = require('./routes/data');
-
 const app = express();
+
+const LOCAL_DOCKER_CONTAINER_DB_URL = 'mongodb://test:test12345@mongo:27017/rest_api';
 
 // Cors middleware
 app.use(cors())

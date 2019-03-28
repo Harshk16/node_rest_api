@@ -1,10 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
+var cors = require('cors');
 const data = require('./routes/data');
 
 const app = express();
+
+// Cors middleware
+app.use(cors())
 
 //  Body Parser middleware
 app.use(bodyParser.urlencoded({extended: false}));

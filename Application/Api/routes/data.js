@@ -4,14 +4,13 @@ const router = express.Router();
 // Load Data Model
 const Data = require("../models/data");
 
-// @router GET api/data
+//  @router GET api/data
 //  @des   Data
-// @access Public
+//  @access Public
 router.get("/", (req, res) => {
   const error = {};
   Data.find()
     .then(data => {
-      console.log("response", data);
       if (!data) {
         error.noData = "No Data Found";
         return res.status(400).json(error);
@@ -21,9 +20,9 @@ router.get("/", (req, res) => {
     .catch(err => res.status(404).json(error));
 });
 
-// @router Post api/data
+//  @router Post api/data
 //  @des   Post data
-// @access Public
+//  @access Public
 router.post("/", (req, res) => {
   const newData = new Data({
     first_name: req.body.first_name,
@@ -33,7 +32,6 @@ router.post("/", (req, res) => {
     .save()
     .then(data => res.json(data))
     .catch(err => console.log(err));
-  console.log("postin daata", newData);
 });
 
 module.exports = router;

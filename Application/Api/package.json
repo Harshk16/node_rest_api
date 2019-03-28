@@ -6,12 +6,14 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false"
+    "client": "npm serve --prefix clients",
+    "dev": "concurrently \"npm run server\" \"ng serve Clients\""
   },
   "author": "Harsh",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mongoose": "^5.4.20"
